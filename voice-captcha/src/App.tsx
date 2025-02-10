@@ -1,17 +1,22 @@
+import React from 'react'
 import './tailwind.css'
+import StartScreen from './components/StartScreen'
+import ChallengeScreen from './components/ChallengeScreen'
+import ResultScreen from './components/ResultScreen'
 
 function App() {
-  return (
-    <div className='bg-black'>
-      <div className='flex items-center justify-center h-screen'>
-        <div className='text-white'>
-          <h1 className='text-4xl font-bold'>Voice Captcha</h1>
-          <p className='text-lg'>Click the button below to start recording</p>
-          <button className='px-4 py-2 mt-4 bg-blue-500 rounded-md' onClick={() => {}}>Start Recording</button>
-        </div>
-      </div>
-    </div>
-  )
+	const [stage, setStage] = React.useState<'start' | 'challenge' | 'result'>('start');
+	const [result, setResult] = React.useState<'success' | 'failure' | null>(null);
+
+  	return (
+		<div className='bg-black'>
+			<div className='flex items-center justify-center h-screen'>
+				{stage === 'start' && <StartScreen startGame={() => setStage('challenge')} />}
+				{stage === 'challenge' && <ChallengeScreen onResult={(res: any) => {setResult(res); setStage('result')}} />}
+				{stage === 'result' && <ResultScreen result={result} onRestart={() => {setResult(null); setStage('start')}} />}
+			</div>
+		</div>
+  	)
 }
 
 export default App
