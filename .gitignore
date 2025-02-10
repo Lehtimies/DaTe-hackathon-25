@@ -1,0 +1,41 @@
+# General Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite build output
+dist/
+.vite/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Editor/IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# macOS system files
+.DS_Store
+
+# Tailwind CSS JIT cache
+.tailwind/
+
+# Optional: logs and temporary files
+logs/
+*.log
+
+# Optional: TypeScript build outputs
+*.tsbuildinfo
+
+# Optional: Storybook
+.storybook/out
+.storybook-static/
