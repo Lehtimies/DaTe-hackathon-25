@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 
 const Visualizer = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
+  const [, setAudioContext] = useState<AudioContext | null>(null);
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
-  const [source, setSource] = useState<MediaStreamAudioSourceNode | null>(null);
+  const [, setSource] = useState<MediaStreamAudioSourceNode | null>(null);
 
   useEffect(() => {
     if (!navigator.mediaDevices.getUserMedia) {

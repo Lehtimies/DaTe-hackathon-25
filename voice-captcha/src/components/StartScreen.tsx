@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react';
-import TalkingAlbin from './albin/TalkingAlbin';
-
 interface StartScreenProps {
     startGame: () => void;
 };

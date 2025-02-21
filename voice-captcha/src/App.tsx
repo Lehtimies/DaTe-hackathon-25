@@ -25,13 +25,13 @@ const RedirectComponent = () => {
 
 function App() {
 	const [stage, setStage] = React.useState<'start' | 'albinintro' | 'cat' | 'dog' | 'albin1' | 'robot' | 'albin2' | 'yelling' | 'albinfinal' | 'rick'>('start');
-	const [result, setResult] = React.useState<'success' | 'failure' | null>(null);
+	const [, setResult] = React.useState<'success' | 'failure' | null>(null);
 
   	return (
 		<div className='bg-transparent'>
 			<div className='flex items-center justify-center h-screen'>
 				{stage === 'start' && <StartScreen startGame={() => setStage("albinintro")} />}
-				{stage === 'albinintro' && <AlbinIntro onResult={(res: any) => setStage("cat")} />}
+				{stage === 'albinintro' && <AlbinIntro onResult={() => setStage("cat")} />}
 				{stage === 'cat' && <CatChallenge onResult={(res: any) => {
 					if (res === 'success') {
 						console.log('success');

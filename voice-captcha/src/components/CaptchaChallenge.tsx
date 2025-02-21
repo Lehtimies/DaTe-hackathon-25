@@ -17,10 +17,10 @@ declare global {
 
 const CaptchaChallenge = ({challengeText, volumeTarget, minFrequency, maxFrequency, words, onResult}: ChallengeProps) => {
     console.log(challengeText, volumeTarget, minFrequency, maxFrequency, words);
-    const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
+    const [, setAnalyser] = useState<AnalyserNode | null>(null);
     const [challengePassed, setChallengePassed] = useState(false);
     const [recognizedWord, setRecognizedWord] = useState("");
-    const [islisteing, setIsListening] = useState(false);
+    const [, setIsListening] = useState(false);
 
     useEffect(() => {
         const initializeAudio = async () => {
@@ -42,7 +42,7 @@ const CaptchaChallenge = ({challengeText, volumeTarget, minFrequency, maxFrequen
 
                     // Calculate the average volume
                     const averageVolume = dataArray.reduce((sum, val) => sum + val, 0) / bufferLength;
-                    console.log("averageVolume: ", averageVolume);
+                    // console.log("averageVolume: ", averageVolume);
 
                     // Find the dominant frequency
                     let maxIndex: number = 0;

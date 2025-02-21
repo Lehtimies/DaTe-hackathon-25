@@ -1,5 +1,5 @@
 import CaptchaChallenge from "../CaptchaChallenge";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Visualizer from "../Visualizer";
 
 const YellingChallenge = ({ onResult }: { onResult: (res: any) => void }) => {
