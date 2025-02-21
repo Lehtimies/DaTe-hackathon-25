@@ -5,6 +5,10 @@ import CatChallenge from './components/challenges/CatChallenge'
 import DogChallenge from './components/challenges/DogChallenge'
 import RobotChallenge from './components/challenges/RobotChallenge'
 import YellingChallenge from './components/challenges/YellingChallenge'
+import AlbinInterval1 from './components/albin/AlbinInterval1'
+import AlbinInterval2 from './components/albin/AlbinInterval2'
+import AlbinFinal from './components/albin/AlibinFinal'
+import AlbinIntro from './components/albin/AlbinIntro'
 
 const RedirectComponent = () => {
 	React.useEffect(() => {
@@ -20,13 +24,14 @@ const RedirectComponent = () => {
 }
 
 function App() {
-	const [stage, setStage] = React.useState<'start' | 'cat' | 'dog' | 'robot' | 'yelling' | 'rick'>('start');
+	const [stage, setStage] = React.useState<'start' | 'albinintro' | 'cat' | 'dog' | 'albin1' | 'robot' | 'albin2' | 'yelling' | 'albinfinal' | 'rick'>('start');
 	const [result, setResult] = React.useState<'success' | 'failure' | null>(null);
 
   	return (
-		<div className='bg-zinc-900'>
+		<div className='bg-transparent'>
 			<div className='flex items-center justify-center h-screen'>
-				{stage === 'start' && <StartScreen startGame={() => setStage('cat')} />}
+				{stage === 'start' && <StartScreen startGame={() => setStage("albinintro")} />}
+				{stage === 'albinintro' && <AlbinIntro onResult={(res: any) => setStage("cat")} />}
 				{stage === 'cat' && <CatChallenge onResult={(res: any) => {
 					if (res === 'success') {
 						console.log('success');
@@ -42,7 +47,7 @@ function App() {
 				{stage === 'dog' && <DogChallenge onResult={(res: any) => {
 					if (res === 'success') {
 						console.log('success');
-						setStage('robot');
+						setStage('albin1');
 					} else if (res === 'failure') {
 						console.log('failure');
 						setStage('start');
@@ -51,10 +56,11 @@ function App() {
 					}
 					setResult(res)
 					}} />}
+				{stage === 'albin1' && <AlbinInterval1 onResult={() => setStage("robot")} />}
 				{stage === 'robot' && <RobotChallenge onResult={(res: any) => {
 					if (res === 'success') {
 						console.log('success');
-						setStage('yelling');
+						setStage('albin2');
 					}
 					else if (res === 'failure') {
 						console.log('failure');
@@ -64,10 +70,11 @@ function App() {
 					}
 					setResult(res)
 					}} />}
+				{stage === 'albin2' && <AlbinInterval2 onResult={() => setStage("yelling")} />}
 				{stage === 'yelling' && <YellingChallenge onResult={(res: any) => {
 					if (res === 'success') {
 						console.log('success');
-						setStage('rick');
+						setStage('albinfinal');
 					}
 					else if (res === 'failure') {
 						console.log('failure');
@@ -77,6 +84,7 @@ function App() {
 					}
 					setResult(res)
 					}} />}
+				{stage === 'albinfinal' && <AlbinFinal onResult={() => setStage("rick")} />}
 				{stage === 'rick' && <RedirectComponent />}
 
 			</div>

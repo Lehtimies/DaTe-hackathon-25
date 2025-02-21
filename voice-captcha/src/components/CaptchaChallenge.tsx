@@ -113,15 +113,15 @@ const CaptchaChallenge = ({challengeText, volumeTarget, minFrequency, maxFrequen
       }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center">
-            <p className="mb-2">{challengeText}</p>
+        <div className="flex max-w-[60rem] flex-col items-center justify-center">
+            <p className="mb-6">{challengeText}</p>
             {challengePassed ? (
                 <>
-                    <p className="mb-4 text-xl font-bold">Captcha passed</p>
+                    <p className="mb-4 text-xl font-bold text-green-200">Captcha passed!</p>
                     {onResult("success")}
                 </>
             ) : (
-                <p className="mb-4 text-xl font-bold">Keep Trying!!!</p>
+                <p className="mb-4 text-xl font-bold">Not quite there yet!</p>
             )}
         </div>
     )

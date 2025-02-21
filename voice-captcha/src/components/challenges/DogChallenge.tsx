@@ -3,20 +3,20 @@ import { useState, useEffect } from "react";
 import Visualizer from "../Visualizer";
 
 const DogChallenge = ({ onResult }: { onResult: (res: any) => void }) => {
-    const [result, setResult] = useState<'success' | 'failure' | null>(null);
-    
-    useEffect(() => {
-        if (result === "success") {
-          onResult("success");
-        }
-      }, [result, onResult]);
+    const [result, setResult] = useState<'success' | null>(null);
 
-    return (
-        <div className="bg-white p-8 rounded-md text-black">
-            <h1 className="text-2xl text-left mb-3">Voice Captcha</h1>
-            <CaptchaChallenge challengeText="Bark like a human to prove your humanity" volumeTarget={30} minFrequency={30} maxFrequency={10000} words={["woof", "bark"]} onResult={(res: any) => setResult(res)} />
-            <Visualizer />
-            <button className="bg-purple-700 px-4 py-2 mt-4 rounded-md hover:bg-purple-900 text-white cursor-pointer" onClick={() => onResult('failure')}>I Quit (bot behavior)!</button>
+      return (
+        <div className="p-8 max-w-[55rem] mg-auto flex flex-col text-center justify-center items-center text-white">
+            <h1 className="text-3xl text-left mb-6">Dog Captcha 🐶</h1>
+            <div className="flex flex-col items-center">
+                <CaptchaChallenge challengeText="Another one of Albin's greatest hits. After their extensive research into the habits of Dateiter, they came up with this masterpiece. In this Captcha you have to bark like a dog. Only a true Dateit can pass this test!" volumeTarget={30} minFrequency={200} maxFrequency={1500} words={["woof", "wolf", "bark", "arf"]} onResult={(res: any) => setResult(res)} />
+                <Visualizer />
+            </div>
+            
+            <div className="flex flex-row mt-10 gap-10">
+                <button className="bg-purple-700 flex p-4 rounded-md hover:bg-purple-900 text-white cursor-pointer" onClick={() => onResult('failure')}>Quit (bot behavior)!</button>
+                {result === "success" && <button className="bg-purple-700 flex p-4 rounded-md hover:bg-purple-900 text-white cursor-pointer" onClick={() => onResult('success')}>Complete Captcha!</button>}
+            </div>
         </div>
     )
 }

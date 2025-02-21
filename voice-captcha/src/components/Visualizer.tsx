@@ -73,8 +73,8 @@ const Visualizer = () => {
   }, [analyser]);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full pt-4">
-      <canvas ref={canvasRef} width={300} height={120} className="bg-transparent" />
+    <div className="flex flex-col items-center justify-center w-full pt-4 bg-transparent rounded-md">
+      <canvas ref={canvasRef} width={300} height={120} className="rounded-2xl" />
     </div>
   );
 };
