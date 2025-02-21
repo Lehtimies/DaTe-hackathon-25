@@ -10,7 +10,7 @@ interface TalkingAlbinProps {
 const TalkingAlbin = ({ messages, msgDelay, typeDelay, onResult }: TalkingAlbinProps) => {
     const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
     const [displayedText, setDisplayedText] = useState("");
-    const [isTalking, setIsTalking] = useState(false);
+    const [, setIsTalking] = useState(false);
 
     useEffect(() => {
         if (currentMessageIndex >= messages.length) return;
