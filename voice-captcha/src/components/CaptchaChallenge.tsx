@@ -16,7 +16,7 @@ declare global {
 }
 
 const CaptchaChallenge = ({challengeText, volumeTarget, minFrequency, maxFrequency, words, onResult}: ChallengeProps) => {
-    console.log(challengeText, volumeTarget, minFrequency, maxFrequency, words);
+    //console.log(challengeText, volumeTarget, minFrequency, maxFrequency, words);
     const [, setAnalyser] = useState<AnalyserNode | null>(null);
     const [challengePassed, setChallengePassed] = useState(false);
     const [recognizedWord, setRecognizedWord] = useState("");
@@ -42,7 +42,7 @@ const CaptchaChallenge = ({challengeText, volumeTarget, minFrequency, maxFrequen
 
                     // Calculate the average volume
                     const averageVolume = dataArray.reduce((sum, val) => sum + val, 0) / bufferLength;
-                    // console.log("averageVolume: ", averageVolume);
+                    //console.log("averageVolume: ", averageVolume);
 
                     // Find the dominant frequency
                     let maxIndex: number = 0;
@@ -84,8 +84,12 @@ const CaptchaChallenge = ({challengeText, volumeTarget, minFrequency, maxFrequen
     }, [recognizedWord]);
 
     useEffect(() => {
+        if (words === null) {
+            return;
+        }
+        
         if (!("webkitSpeechRecognition" in window)) {
-          alert("Speech recognition is not supported in this browser.");
+          alert("Speech recognition is not supported in this browser. Try using Chrmoe.");
           return;
         }
     
